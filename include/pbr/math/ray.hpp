@@ -13,7 +13,5 @@ namespace pbr
         vector direction;
 
         point operator()(number t) const;
-
-        friend point operator+(const ray &left, const ray &right);
     };
 }

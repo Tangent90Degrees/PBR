@@ -29,9 +29,9 @@ namespace pbr
         /// @param vec The vector to copy from.
         vector(const algebra::vector<number, 3> &vec);
         
-        friend bool operator==(const vector &left, const vector &right);
     };
 
+    bool operator==(const vector &left, const vector &right);
     bool operator!=(const vector &left, const vector &right);
 
     vector operator+(const vector &left, const vector &right);
