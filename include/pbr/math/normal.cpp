@@ -6,22 +6,17 @@ namespace pbr
     {
     }
 
-    normal::normal(const normal &normal)
-        : algebra::vector<number, 3>(normal.entries)
+    normal::normal(const normal &n)
+        : algebra::vector_base<number, 3, normal>(n.entries)
     {
     }
 
     normal::normal(number x, number y, number z)
-        : algebra::vector<number, 3>({x, y, z})
+        : algebra::vector_base<number, 3, normal>({{{x, y, z}}})
     {
     }
 
-    normal::normal(const algebra::vector<number, 3> &vec)
-        : algebra::vector<number, 3>(vec)
-    {
-    }
-
-    normal &normal::face_toward(const algebra::vector<number, 3> &direction)
+    normal &normal::face_toward(const algebra::vector_base<number, 3, normal> &direction)
     {
         if (dot(*this, direction) < 0)
         {
@@ -30,7 +25,7 @@ namespace pbr
         return *this;
     }
 
-    normal normal::face_toward(const algebra::vector<number, 3> &direction) const
+    normal normal::face_toward(const algebra::vector_base<number, 3, normal> &direction) const
     {
         return dot(*this, direction) < 0 ? -*this : *this;
     }

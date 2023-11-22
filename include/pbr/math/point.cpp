@@ -6,41 +6,41 @@ namespace pbr
     {
     }
 
-    point::point(const point &point)
-        : algebra::vector<number, 3>(point.entries)
+    point::point(const point &p)
+        : algebra::vector_base<number, 3, point>(p.entries)
     {
     }
 
-    point::point(number x, number y, number z)
-        : algebra::vector<number, 3>({x, y, z})
+    // point::point(number x, number y, number z)
+    //     : algebra::vector_base<number, 3, point>({{{x, y, z}}})
+    // {
+    // }
+
+    point::point(const algebra::vector_base<number, 3, point> &vec)
+        : algebra::vector_base<number, 3, point>(vec)
     {
     }
 
-    point::point(const algebra::vector<number, 3> &vec)
-        : algebra::vector<number, 3>(vec)
-    {
-    }
+    // point operator+(const point &left, const vector &right)
+    // {
+    //     return point(left[X] + right[X],
+    //                  left[Y] + right[Y],
+    //                  left[Z] + right[Z]);
+    // }
 
-    point operator+(const point &left, const vector &right)
-    {
-        return point(left[X] + right[X],
-                     left[Y] + right[Y],
-                     left[Z] + right[Z]);
-    }
+    // point operator-(const point &left, const vector &right)
+    // {
+    //     return point(left[X] - right[X],
+    //                  left[Y] - right[Y],
+    //                  left[Z] - right[Z]);
+    // }
 
-    point operator-(const point &left, const vector &right)
-    {
-        return point(left[X] - right[X],
-                     left[Y] - right[Y],
-                     left[Z] - right[Z]);
-    }
-
-    vector operator-(const point &left, const point &right)
-    {
-        return vector(left[X] - right[X],
-                      left[Y] - right[Y],
-                      left[Z] - right[Z]);
-    }
+    // vector operator-(const point &left, const point &right)
+    // {
+    //     return vector(left[X] - right[X],
+    //                   left[Y] - right[Y],
+    //                   left[Z] - right[Z]);
+    // }
 
     number sqr_distance(const point &left, const point &right)
     {

@@ -4,7 +4,7 @@
 
 namespace pbr
 {
-    struct normal : public algebra::vector<number, 3>
+    struct normal : public algebra::vector_base<number, 3, normal>
     {
         /// @brief Default normal constructor.
         normal();
@@ -19,12 +19,8 @@ namespace pbr
         /// @param z The z entry.
         normal(number x, number y, number z);
 
-        /// @brief Constructs a normal as a copy of some abstract vector.
-        /// @param vec The vector to copy from.
-        normal(const algebra::vector<number, 3> &vec);
-
-        normal &face_toward(const algebra::vector<number, 3> &direction);
-        normal face_toward(const algebra::vector<number, 3> &direction) const;
+        normal &face_toward(const algebra::vector_base<number, 3, normal> &direction);
+        normal face_toward(const algebra::vector_base<number, 3, normal> &direction) const;
     };
 
     normal operator-(const normal &right);

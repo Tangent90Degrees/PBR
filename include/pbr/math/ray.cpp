@@ -11,8 +11,8 @@ namespace pbr
     {
     }
 
-    point ray::operator()(number t) const
-    {
-        return origin + t * direction;
-    }
+    // point ray::operator()(number t) const
+    // {
+    //     return origin + t * direction;
+    // }
 }
