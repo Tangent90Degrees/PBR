@@ -140,8 +140,8 @@ namespace algebra
     /// @param left A vector to be tested for inequality.
     /// @param right A vector to be tested for inequality.
     /// @return `true` if the numbers are equal and `false` if numbers are not equal.
-    template <typename T, size_t SIZE, typename SELF>
-    inline bool operator==(const vector_base<T, SIZE, SELF> &left, const vector_base<T, SIZE, SELF> &right)
+    template <typename T, size_t SIZE, typename VEC_L, typename VEC_R>
+    inline bool operator==(const vector_base<T, SIZE, VEC_L> &left, const vector_base<T, SIZE, VEC_R> &right)
     {
         for (size_t i = 0; i < SIZE; i++)
         {
@@ -159,8 +159,8 @@ namespace algebra
     /// @param left A vector to be tested for inequality.
     /// @param right A vector to be tested for inequality.
     /// @return `true` if the numbers are not equal and `false` if numbers are equal.
-    template <typename T, size_t SIZE, typename SELF>
-    inline bool operator!=(const vector_base<T, SIZE, SELF> &left, const vector_base<T, SIZE, SELF> &right)
+    template <typename T, size_t SIZE, typename VEC_L, typename VEC_R>
+    inline bool operator!=(const vector_base<T, SIZE, VEC_L> &left, const vector_base<T, SIZE, VEC_R> &right)
     {
         for (size_t i = 0; i < SIZE; i++)
         {
@@ -189,10 +189,10 @@ namespace algebra
     /// @param left The first vector to be added by the `+` operation.
     /// @param right The second vector to be added by the `+` operation.
     /// @return The sum that results from the addition of the two vectors.
-    template <typename T, size_t SIZE, typename SELF>
-    inline SELF operator+(const vector_base<T, SIZE, SELF> &left, const vector_base<T, SIZE, SELF> &right)
+    template <typename T, size_t SIZE, typename VEC_L, typename VEC_R, typename VEC = VEC_L>
+    inline VEC operator+(const vector_base<T, SIZE, VEC_L> &left, const vector_base<T, SIZE, VEC_R> &right)
     {
-        SELF temp;
+        VEC temp;
         for (size_t i = 0; i < SIZE; i++)
         {
             temp[i] = left[i] + right[i];
@@ -206,10 +206,10 @@ namespace algebra
     /// @param left The first vector to be subtracted by the `-` operation.
     /// @param right The second vector to be subtracted by the `-` operation.
     /// @return The difference that results from the subtraction of `right` from `left`.
-    template <typename T, size_t SIZE, typename SELF>
-    inline SELF operator-(const vector_base<T, SIZE, SELF> &left, const vector_base<T, SIZE, SELF> &right)
+    template <typename T, size_t SIZE, typename VEC_L, typename VEC_R, typename VEC = VEC_L>
+    inline VEC operator-(const vector_base<T, SIZE, VEC_L> &left, const vector_base<T, SIZE, VEC_R> &right)
     {
-        SELF temp;
+        VEC temp;
         for (size_t i = 0; i < SIZE; i++)
         {
             temp[i] = left[i] - right[i];
@@ -258,8 +258,8 @@ namespace algebra
         return temp;
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline T dot(const vector_base<T, SIZE, SELF> &left, const vector_base<T, SIZE, SELF> &right)
+    template <typename T, size_t SIZE, typename VEC_L, typename VEC_R>
+    inline T dot(const vector_base<T, SIZE, VEC_L> &left, const vector_base<T, SIZE, VEC_R> &right)
     {
         T dot_product = 0;
         for (size_t i = 0; i < SIZE; i++)
@@ -269,8 +269,8 @@ namespace algebra
         return dot_product;
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline std::complex<T> dot(const vector_base<std::complex<T>, SIZE, SELF> &left, const vector_base<std::complex<T>, SIZE, SELF> &right)
+    template <typename T, size_t SIZE, typename VEC_L, typename VEC_R>
+    inline std::complex<T> dot(const vector_base<std::complex<T>, SIZE, VEC_L> &left, const vector_base<std::complex<T>, SIZE, VEC_R> &right)
     {
         std::complex<T> dot_product = 0;
         for (size_t i = 0; i < SIZE; i++)

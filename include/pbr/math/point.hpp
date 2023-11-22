@@ -18,15 +18,13 @@ namespace pbr
         /// @param y The y entry.
         /// @param z The z entry.
         point(number x, number y, number z);
-
-        /// @brief Constructs a vector as a copy of some abstract vector.
-        /// @param vec The vector to copy from.
-        point(const algebra::vector_base<number, 3, point> &vec);
     };
 
-    // point operator+(const point &left, const vector &right);
-    // point operator-(const point &left, const vector &right);
-    // vector operator-(const point &left, const point &right);
+    std::ostream &operator<<(std::ostream &stream, const point &p);
+
+    point operator+(const point &left, const vector &right);
+    point operator-(const point &left, const vector &right);
+    vector operator-(const point &left, const point &right);
 
     number sqr_distance(const point &left, const point &right);
     number distance(const point &left, const point &right);

@@ -26,23 +26,5 @@ namespace pbr
         vector(number x, number y, number z);
     };
 
-    // bool operator==(const vector &left, const vector &right);
-    // bool operator!=(const vector &left, const vector &right);
-
-    // vector operator+(const vector &right);
-    // vector operator-(const vector &right);
-
-    // vector operator+(const vector &left, const vector &right);
-    // vector operator-(const vector &left, const vector &right);
-    // vector operator*(number left, const vector &right);
-    // vector operator*(const vector &left, number right);
-    // vector operator/(const vector &left, number right);
-
-    // number dot(const vector &left, const vector &right);
-    // vector cross(const vector &left, const vector &right);
-
-    // number sqr_magnitude(const vector &vec);
-    // number magnitude(const vector &vec);
-
-    // vector normalized(const vector &vec);
+    std::ostream &operator<<(std::ostream &stream, const vector &vec);
 }
