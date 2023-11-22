@@ -6,13 +6,13 @@ namespace pbr
     {
     }
 
-    point::point(const point &p)
-        : algebra::vector_base<number, 3, point>(p.entries)
+    point::point(vec_const_reference p)
+        : vector_base(p.entries)
     {
     }
 
     point::point(number x, number y, number z)
-        : algebra::vector_base<number, 3, point>({{{x, y, z}}})
+        : vector_base(array({x, y, z}))
     {
     }
 

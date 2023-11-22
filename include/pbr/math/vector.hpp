@@ -16,8 +16,8 @@ namespace pbr
         vector();
 
         /// @brief Constructs a vector as a copy of some other vector.
-        /// @param vec The vector to copy from.
-        vector(const vector &vec);
+        /// @param v The vector to copy from.
+        vector(vec_const_reference v);
 
         /// @brief Constructs a vector with specified entries.
         /// @param x The x entry.
@@ -26,5 +26,5 @@ namespace pbr
         vector(number x, number y, number z);
     };
 
-    std::ostream &operator<<(std::ostream &stream, const vector &vec);
+    std::ostream &operator<<(std::ostream &stream, const vector &v);
 }

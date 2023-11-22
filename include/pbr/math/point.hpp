@@ -10,8 +10,8 @@ namespace pbr
         point();
 
         /// @brief Constructs a vector as a copy of some other vector.
-        /// @param point The vector to copy from.
-        point(const point &p);
+        /// @param p The vector to copy from.
+        point(vec_const_reference p);
 
         /// @brief Constructs a vector with specified entries.
         /// @param x The x entry.

@@ -34,8 +34,12 @@ namespace algebra
         /// @brief Constructs a vector as a copy of some other vector.
         /// @param vec The vector to copy from.
         vector_base(vec_const_reference vec)
-            : entries(vec.entries)
         {
+            for (size_t i = 0; i < SIZE; i++)
+            {
+                entries[i] = vec[i];
+            }
+
             std::cout << "Vector get copied." << std::endl;
         }
 

@@ -6,18 +6,18 @@ namespace pbr
     {
     }
 
-    vector::vector(const vector &vec)
-        : algebra::vector_base<number, 3, vector>(vec.entries)
+    vector::vector(vec_const_reference v)
+        : vector_base(v.entries)
     {
     }
 
     vector::vector(number x, number y, number z)
-        : algebra::vector_base<number, 3, vector>({{{x, y, z}}})
+        : vector_base(array({x, y, z}))
     {
     }
 
-    std::ostream &operator<<(std::ostream &stream, const vector &vec)
+    std::ostream &operator<<(std::ostream &stream, const vector &v)
     {
-        return algebra::operator<<(stream << "vector", vec);
+        return algebra::operator<<(stream << "vector", v);
     }
 }
