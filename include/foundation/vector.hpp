@@ -111,41 +111,47 @@ namespace algebra
             return *this;
         }
 
-        /// @brief Tests for equality between two vectors.
-        /// @param left A vector to be tested for inequality.
-        /// @param right A vector to be tested for inequality.
-        /// @return `true` if the numbers are equal and `false` if numbers are not equal.
-        friend inline bool operator==(vec_const_reference left, vec_const_reference right)
-        {
-            for (size_t i = 0; i < SIZE; i++)
-            {
-                if (left[i] != right[i])
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        /// @brief Prints specified vector.
-        /// @param stream The `ostream`.
-        /// @param vec The vector to print.
-        /// @return The `ostream`.
-        friend std::ostream &operator<<(std::ostream &stream, vec_const_reference vec)
-        {
-            stream << '(' << vec[0];
-            for (size_t i = 1; i < SIZE; i++)
-            {
-                stream << ',' << ' ' << vec[i];
-            }
-            stream << ')';
-            return stream;
-        }
-
     protected:
         /// @brief The array of entries of this vector.
         array entries;
     };
+
+    /// @brief Prints specified vector.
+    /// @tparam T The type of vector entries.
+    /// @tparam SIZE The dimension of two vectors.
+    /// @param stream The `ostream`.
+    /// @param vec The vector to print.
+    /// @return The `ostream`.
+    template <typename T, size_t SIZE>
+    std::ostream &operator<<(std::ostream &stream, const vector<T, SIZE> &vec)
+    {
+        stream << '(' << vec[0];
+        for (size_t i = 1; i < SIZE; i++)
+        {
+            stream << ',' << ' ' << vec[i];
+        }
+        stream << ')';
+        return stream;
+    }
+
+    /// @brief Tests for equality between two vectors.
+    /// @tparam T The type of vector entries.
+    /// @tparam SIZE The dimension of two vectors.
+    /// @param left A vector to be tested for inequality.
+    /// @param right A vector to be tested for inequality.
+    /// @return `true` if the numbers are equal and `false` if numbers are not equal.
+    template <typename T, size_t SIZE>
+    inline bool operator==(const vector<T, SIZE> & left, const vector<T, SIZE> & right)
+    {
+        for (size_t i = 0; i < SIZE; i++)
+        {
+            if (left[i] != right[i])
+            {
+                return false;
+            }
+        }
+        return true;
+    }
 
     /// @brief Tests for equality between two vectors.
     /// @tparam T The type of vector entries.

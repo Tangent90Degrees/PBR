@@ -34,6 +34,9 @@ namespace pbr
     bool operator==(const vector &left, const vector &right);
     bool operator!=(const vector &left, const vector &right);
 
+    vector operator+(const vector &right);
+    vector operator-(const vector &right);
+
     vector operator+(const vector &left, const vector &right);
     vector operator-(const vector &left, const vector &right);
     vector operator*(number left, const vector &right);

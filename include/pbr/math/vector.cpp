@@ -35,6 +35,18 @@ namespace pbr
                left[Z] != right[Z];
     }
 
+    vector operator+(const vector &right)
+    {
+        return right;
+    }
+
+    vector operator-(const vector &right)
+    {
+        return vector(-right[X],
+                      -right[Y],
+                      -right[Z]);
+    }
+
     vector operator+(const vector &left, const vector &right)
     {
         return vector(left[X] + right[X],
