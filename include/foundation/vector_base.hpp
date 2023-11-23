@@ -9,7 +9,8 @@ namespace algebra
     /// @brief The structure template describes a vector stores `SIZE` entries of type `T`.
     /// @tparam T The type of vector entries.
     /// @tparam SIZE The dimension of the vector.
-    template <typename T, size_t SIZE, typename SELF>
+    /// @tparam VEC The type of vector itself.
+    template <typename T, size_t SIZE, typename VEC>
     struct vector_base
     {
         /// @brief The type of vector entries.
@@ -23,7 +24,7 @@ namespace algebra
         using array_reference = std::array<entry, SIZE> &;
         using array_const_reference = const std::array<entry, SIZE> &;
 
-        using vec = SELF;
+        using vec = VEC;
         using vec_reference = vec &;
         using vec_const_reference = const vec &;
 
@@ -126,8 +127,8 @@ namespace algebra
     /// @param stream The `ostream`.
     /// @param vec The vector to print.
     /// @return The `ostream`.
-    template <typename T, size_t SIZE, typename SELF>
-    std::ostream &operator<<(std::ostream &stream, const vector_base<T, SIZE, SELF> &vec)
+    template <typename T, size_t SIZE, typename VEC>
+    std::ostream &operator<<(std::ostream &stream, const vector_base<T, SIZE, VEC> &vec)
     {
         stream << '(' << vec[0];
         for (size_t i = 1; i < SIZE; i++)
@@ -176,10 +177,10 @@ namespace algebra
         return false;
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline SELF operator-(const vector_base<T, SIZE, SELF> &vec)
+    template <typename T, size_t SIZE, typename VEC>
+    inline VEC operator-(const vector_base<T, SIZE, VEC> &vec)
     {
-        SELF temp;
+        VEC temp;
         for (size_t i = 0; i < SIZE; i++)
         {
             temp[i] = -vec[i];
@@ -222,16 +223,16 @@ namespace algebra
     }
 
     /// @brief Multiplies a vector and a scalar.
-    /// @tparam T The type of vector entries.
     /// @tparam S The type of the scalar.
+    /// @tparam T The type of vector entries.
     /// @tparam SIZE The dimension of the vector.
     /// @param left The scalar to be multiplied by the `*` operation.
     /// @param right The vector to be multiplied by the `*` operation.
     /// @return The product that results from the multiplication.
-    template <typename T, typename S, size_t SIZE, typename SELF>
-    inline SELF operator*(const S &left, const vector_base<T, SIZE, SELF> &right)
+    template <typename S, typename T, size_t SIZE, typename VEC>
+    inline VEC operator*(const S &left, const vector_base<T, SIZE, VEC> &right)
     {
-        SELF temp;
+        VEC temp;
         for (size_t i = 0; i < SIZE; i++)
         {
             temp[i] = left * right[i];
@@ -239,10 +240,10 @@ namespace algebra
         return temp;
     }
 
-    template <typename T, typename S, size_t SIZE, typename SELF>
-    inline SELF operator*(const vector_base<T, SIZE, SELF> &left, const S &right)
+    template <typename T, typename S, size_t SIZE, typename VEC>
+    inline VEC operator*(const vector_base<T, SIZE, VEC> &left, const S &right)
     {
-        SELF temp;
+        VEC temp;
         for (size_t i = 0; i < SIZE; i++)
         {
             temp[i] = left[i] * right;
@@ -250,10 +251,10 @@ namespace algebra
         return temp;
     }
 
-    template <typename T, typename S, size_t SIZE, typename SELF>
-    inline SELF operator/(const vector_base<T, SIZE, SELF> &left, const S &right)
+    template <typename T, typename S, size_t SIZE, typename VEC>
+    inline VEC operator/(const vector_base<T, SIZE, VEC> &left, const S &right)
     {
-        SELF temp;
+        VEC temp;
         S inverse = static_cast<S>(1) / right;
         for (size_t i = 0; i < SIZE; i++)
         {
@@ -284,8 +285,8 @@ namespace algebra
         return dot_product;
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline T sqr_magnitude(const vector_base<T, SIZE, SELF> &vec)
+    template <typename T, size_t SIZE, typename VEC>
+    inline T sqr_magnitude(const vector_base<T, SIZE, VEC> &vec)
     {
         T sqr_magnitude = 0;
         for (size_t i = 0; i < SIZE; i++)
@@ -295,8 +296,8 @@ namespace algebra
         return sqr_magnitude;
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline T sqr_magnitude(const vector_base<std::complex<T>, SIZE, SELF> &vec)
+    template <typename T, size_t SIZE, typename VEC>
+    inline T sqr_magnitude(const vector_base<std::complex<T>, SIZE, VEC> &vec)
     {
         T sqr_magnitude = 0;
         for (size_t i = 0; i < SIZE; i++)
@@ -307,20 +308,20 @@ namespace algebra
         return sqr_magnitude;
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline T magnitude(const vector_base<T, SIZE, SELF> &vec)
+    template <typename T, size_t SIZE, typename VEC>
+    inline T magnitude(const vector_base<T, SIZE, VEC> &vec)
     {
         return sqrt(sqr_magnitude(vec));
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline T magnitude(const vector_base<std::complex<T>, SIZE, SELF> &vec)
+    template <typename T, size_t SIZE, typename VEC>
+    inline T magnitude(const vector_base<std::complex<T>, SIZE, VEC> &vec)
     {
         return sqrt(sqr_magnitude(vec));
     }
 
-    template <typename T, size_t SIZE, typename SELF>
-    inline SELF normalied(const vector_base<T, SIZE, SELF> &vec)
+    template <typename T, size_t SIZE, typename VEC>
+    inline VEC normalied(const vector_base<T, SIZE, VEC> &vec)
     {
         return vec / magnitude(vec);
     }

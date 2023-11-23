@@ -4,7 +4,7 @@
 
 namespace algebra
 {
-    template <typename T, size_t ROW, size_t COL, typename SELF>
+    template <typename T, size_t ROW, size_t COL, typename VEC>
     struct matrix_base
     {
         /// @brief The type of vector entries.
@@ -26,7 +26,7 @@ namespace algebra
         using block_reference = block &;
         using block_const_reference = const block &;
 
-        using mat = SELF;
+        using mat = VEC;
         using mat_reference = mat &;
         using mat_const_reference = const mat &;
 

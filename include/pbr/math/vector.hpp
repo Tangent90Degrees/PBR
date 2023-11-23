@@ -13,17 +13,17 @@ namespace pbr
     struct vector : public algebra::vector_base<number, 3, vector>
     {
         /// @brief Default vector constructor.
-        constexpr vector();
+        vector();
 
         /// @brief Constructs a vector as a copy of some other vector.
         /// @param v The vector to copy from.
-        constexpr vector(vec_const_reference v);
+        vector(vec_const_reference v);
 
         /// @brief Constructs a vector with specified entries.
         /// @param x The x entry.
         /// @param y The y entry.
         /// @param z The z entry.
-        constexpr vector(entry x, entry y, entry z);
+        vector(entry x, entry y, entry z);
     };
 
     std::ostream &operator<<(std::ostream &stream, const vector &v);
