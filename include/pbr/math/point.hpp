@@ -17,7 +17,7 @@ namespace pbr
         /// @param x The x entry.
         /// @param y The y entry.
         /// @param z The z entry.
-        point(number x, number y, number z);
+        point(entry x, entry y, entry z);
     };
 
     std::ostream &operator<<(std::ostream &stream, const point &p);
@@ -26,8 +26,8 @@ namespace pbr
     point operator-(const point &left, const vector &right);
     vector operator-(const point &left, const point &right);
 
-    number sqr_distance(const point &left, const point &right);
-    number distance(const point &left, const point &right);
+    constexpr number sqr_distance(const point &left, const point &right);
+    constexpr number distance(const point &left, const point &right);
 
     point lerp(number t, const point &from, const point &to);
 }

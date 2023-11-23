@@ -2,16 +2,16 @@
 
 namespace pbr
 {
-    vector::vector()
+    constexpr vector::vector()
     {
     }
 
-    vector::vector(vec_const_reference v)
+    constexpr vector::vector(vec_const_reference v)
         : vector_base(v.entries)
     {
     }
 
-    vector::vector(number x, number y, number z)
+    constexpr vector::vector(entry x, entry y, entry z)
         : vector_base(array({x, y, z}))
     {
     }

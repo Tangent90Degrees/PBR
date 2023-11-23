@@ -14,9 +14,16 @@ namespace pbr
     matrix::matrix(entry xx, entry xy, entry xz,
                    entry yx, entry yy, entry yz,
                    entry zx, entry zy, entry zz)
-        : matrix_base({{{xx, xy, xz},
-                        {yx, yy, yz},
-                        {zx, zy, zz}}})
+    {
+        entries[X] = {xx, xy, xz};
+        entries[Y] = {yx, yy, yz};
+        entries[Z] = {zx, zy, zz};
+    }
+
+    matrix::matrix(entry d)
+        : matrix(d, 0, 0,
+                 0, d, 0,
+                 0, 0, d)
     {
     }
 

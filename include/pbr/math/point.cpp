@@ -11,7 +11,7 @@ namespace pbr
     {
     }
 
-    point::point(number x, number y, number z)
+    point::point(entry x, entry y, entry z)
         : vector_base(array({x, y, z}))
     {
     }
@@ -36,12 +36,12 @@ namespace pbr
         return algebra::operator- <number, 3, point, point, vector>(left, right);
     }
 
-    number sqr_distance(const point &left, const point &right)
+    constexpr number sqr_distance(const point &left, const point &right)
     {
         return sqr_magnitude(left - right);
     }
 
-    number distance(const point &left, const point &right)
+    constexpr number distance(const point &left, const point &right)
     {
         return magnitude(left - right);
     }

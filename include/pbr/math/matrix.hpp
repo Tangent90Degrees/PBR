@@ -13,7 +13,10 @@ namespace pbr
         matrix(entry xx, entry xy, entry xz,
                entry yx, entry yy, entry yz,
                entry zx, entry zy, entry zz);
+        matrix(entry d);
     };
+    
+    // static constexpr matrix ZERO(0);
 
     vector operator*(const matrix &left, const vector &right);
 
