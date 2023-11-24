@@ -21,21 +21,6 @@ namespace pbr
         return algebra::operator<<(stream << "point", p);
     }
 
-    point operator+(const point &left, const vector &right)
-    {
-        return algebra::operator+(left, right);
-    }
-
-    point operator-(const point &left, const vector &right)
-    {
-        return algebra::operator-(left, right);
-    }
-
-    vector operator-(const point &left, const point &right)
-    {
-        return algebra::operator- <number, 3, point, point, vector>(left, right);
-    }
-
     constexpr number sqr_distance(const point &left, const point &right)
     {
         return sqr_magnitude(left - right);

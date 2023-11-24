@@ -27,4 +27,13 @@ namespace pbr
     };
 
     std::ostream &operator<<(std::ostream &stream, const vector &v);
+
+    inline vector cross(const vector &left, const vector &right)
+    {
+        return vector(left[Y] * right[Z] - left[Z] * right[Y],
+                      left[Z] * right[X] - left[X] * right[Z],
+                      left[X] * right[Y] - left[Y] * right[X]);
+    }
+
+    inline vector normalized(const vector &v) { return algebra::normalied(v); }
 }

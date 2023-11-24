@@ -108,12 +108,17 @@ namespace algebra
         /// @return A vector that has had the vector specified as a parameter divided.
         inline vec_reference operator/=(const_reference right)
         {
-            entry inverse = static_cast<entry>(1) / right;
+            entry inverse = entry(1) / right;
             for (size_t i = 0; i < SIZE; i++)
             {
                 entries[i] *= inverse;
             }
             return *this;
+        }
+
+        inline vec_reference normalize()
+        {
+            return *this /= magnitude(*this);
         }
 
     protected:

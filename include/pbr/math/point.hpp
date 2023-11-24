@@ -22,9 +22,20 @@ namespace pbr
 
     std::ostream &operator<<(std::ostream &stream, const point &p);
 
-    point operator+(const point &left, const vector &right);
-    point operator-(const point &left, const vector &right);
-    vector operator-(const point &left, const point &right);
+    inline point operator+(const point &left, const vector &right)
+    {
+        return algebra::operator+(left, right);
+    }
+
+    inline point operator-(const point &left, const vector &right)
+    {
+        return algebra::operator-(left, right);
+    }
+
+    inline vector operator-(const point &left, const point &right)
+    {
+        return algebra::operator- <number, 3, point, point, vector>(left, right);
+    }
 
     constexpr number sqr_distance(const point &left, const point &right);
     constexpr number distance(const point &left, const point &right);

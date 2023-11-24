@@ -14,6 +14,8 @@ namespace pbr
                entry yx, entry yy, entry yz,
                entry zx, entry zy, entry zz);
         matrix(entry d);
+        matrix(const vector &x_axis, const vector &y_axis, const vector &z_axis);
+        matrix(const vector &x_axis, const vector &y_axis);
     };
     
     // static constexpr matrix ZERO(0);

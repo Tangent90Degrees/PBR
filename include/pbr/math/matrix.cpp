@@ -27,6 +27,18 @@ namespace pbr
     {
     }
 
+    matrix::matrix(const vector &x_axis, const vector &y_axis, const vector &z_axis)
+        : matrix(x_axis[X], y_axis[X], z_axis[X],
+                 x_axis[Y], y_axis[Y], z_axis[Y],
+                 x_axis[Z], y_axis[Z], z_axis[Z])
+    {
+    }
+
+    matrix::matrix(const vector &x_axis, const vector &y_axis)
+        : matrix(x_axis, y_axis, cross(x_axis, y_axis).normalize())
+    {
+    }
+
     vector operator*(const matrix &left, const vector &right)
     {
         return algebra::operator* <number, 3, 3, matrix, vector, vector>(left, right);
