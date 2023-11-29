@@ -37,8 +37,8 @@ namespace pbr
         return algebra::operator- <number, 3, point, point, vector>(left, right);
     }
 
-    constexpr number sqr_distance(const point &left, const point &right);
-    constexpr number distance(const point &left, const point &right);
+    number sqr_distance(const point &left, const point &right);
+    number distance(const point &left, const point &right);
 
     point lerp(number t, const point &from, const point &to);
 }

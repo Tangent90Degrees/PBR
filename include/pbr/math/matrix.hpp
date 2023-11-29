@@ -15,11 +15,15 @@ namespace pbr
                entry zx, entry zy, entry zz);
         matrix(entry d);
         matrix(const vector &x_axis, const vector &y_axis, const vector &z_axis);
-        matrix(const vector &x_axis, const vector &y_axis);
+        // matrix(const vector &x_axis, const vector &y_axis);
     };
-    
-    // static constexpr matrix ZERO(0);
 
     vector operator*(const matrix &left, const vector &right);
+    matrix operator*(const matrix &left, const matrix &right);
+
+    number det(const matrix &m);
+    number trace(const matrix &m);
+
+    matrix inverse(const matrix &m);
 
 } // namespace pbr

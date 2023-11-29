@@ -21,12 +21,12 @@ namespace pbr
         return algebra::operator<<(stream << "point", p);
     }
 
-    constexpr number sqr_distance(const point &left, const point &right)
+    number sqr_distance(const point &left, const point &right)
     {
         return sqr_magnitude(left - right);
     }
 
-    constexpr number distance(const point &left, const point &right)
+    number distance(const point &left, const point &right)
     {
         return magnitude(left - right);
     }

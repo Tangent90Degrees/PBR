@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include "vector_base.hpp"
 
 namespace algebra
@@ -69,6 +70,52 @@ namespace algebra
         block entries;
     };
 
+    template <typename T, size_t M, size_t N, typename MAT>
+    std::ostream &operator<<(std::ostream &stream, const matrix_base<T, M, N, MAT> &m)
+    {
+        for (size_t i = 0; i < M; i++)
+        {
+            for (size_t j = 0; j < N; j++)
+            {
+                stream << m[i][j] << '\t';
+            }
+            stream << std::endl;
+        }
+        return stream;
+    }
+
+    template <typename T, size_t M, size_t N, typename MAT>
+    inline bool operator==(const matrix_base<T, M, N, MAT> &left, const matrix_base<T, M, N, MAT> &right)
+    {
+        for (size_t i = 0; i < M; i++)
+        {
+            for (size_t j = 0; j < N; j++)
+            {
+                if (left[i][j] != right[i][j])
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    template <typename T, size_t M, size_t N, typename MAT>
+    inline bool operator!=(const matrix_base<T, M, N, MAT> &left, const matrix_base<T, M, N, MAT> &right)
+    {
+        for (size_t i = 0; i < M; i++)
+        {
+            for (size_t j = 0; j < N; j++)
+            {
+                if (left[i][j] != right[i][j])
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
     template <typename T, size_t M, size_t N, typename MAT, typename VEC_M, typename VEC_N>
     inline VEC_M operator*(const matrix_base<T, M, N, MAT> &left, const vector_base<T, N, VEC_N> &right)
     {
@@ -85,7 +132,7 @@ namespace algebra
         return product;
     }
 
-    template <typename T, size_t L, size_t M, size_t N, typename MAT, typename MAT_L, typename MAT_R>
+    template <typename T, size_t L, size_t M, size_t N, typename MAT_L, typename MAT_R, typename MAT = MAT_L>
     inline MAT operator*(const matrix_base<T, L, M, MAT_L> &left, const matrix_base<T, M, N, MAT_R> &right)
     {
         MAT product;

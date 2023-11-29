@@ -28,6 +28,8 @@ namespace algebra
         using vec_reference = vec &;
         using vec_const_reference = const vec &;
 
+        using base_vec_reference = vector_base<T, SIZE, VEC> &;
+
         vector_base()
         {
         }
@@ -106,7 +108,7 @@ namespace algebra
         /// @brief Divide a scalar to another target vector.
         /// @param right A vector that is of the same type as the parameter of the target vector.
         /// @return A vector that has had the vector specified as a parameter divided.
-        inline vec_reference operator/=(const_reference right)
+        inline base_vec_reference operator/=(const_reference right)
         {
             entry inverse = entry(1) / right;
             for (size_t i = 0; i < SIZE; i++)
@@ -116,7 +118,7 @@ namespace algebra
             return *this;
         }
 
-        inline vec_reference normalize()
+        inline base_vec_reference normalize()
         {
             return *this /= magnitude(*this);
         }
